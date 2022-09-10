@@ -111,3 +111,9 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- Find the Best-Picture winner with the best/smallest earnings rank. The
+-- result should have the form (name, earnings_rank). Assume no two movies
+-- have the same earnings rank.
+
+SELECT movie_name, min(earnings_rank) FROM `movies`;
