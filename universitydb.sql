@@ -109,6 +109,9 @@ CREATE TABLE IF NOT EXISTS `universitydb`.`enrolled` (
 ENGINE = InnoDB;
 
 
+-- SQL query to find all the rooms that can seat at least 100 people
+SELECT * FROM `rooms` WHERE room_capacity>=100
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
