@@ -123,8 +123,11 @@ SELECT DISTINCT c.course_name from majors_in as m, enrolled as e, departments as
 -- SQL query to find the students that are not enrolled in any course
 SELECT DISTINCT s.student_name FROM students s WHERE NOT EXISTS (SELECT * from enrolled e where e.student_id = s.student_id)
 
--- SQL query to find CS students enrolled in CSC275
+-- SQL query to find the count of CS students enrolled in CSC275
 SELECT count(DISTINCT e.student_id) FROM enrolled e, majors_in m, courses c, departments d WHERE d.department_name="CS" and m.department_id = d.department_id and c.course_name="CSC275" and e.course_crn = c.crn
+
+-- SQL query to find the count of CS students enrolled in any course
+SELECT count(DISTINCT e.student_id) FROM enrolled e, majors_in m, departments d WHERE d.department_name="CS" and m.department_id = d.department_id and e.student_id = m.student_id
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
