@@ -120,6 +120,9 @@ SELECT course_name, MIN(start_time) FROM `courses`
 -- SQL query to find the courses taken by BIF majors
 SELECT DISTINCT c.course_name from majors_in as m, enrolled as e, departments as d, courses as c where d.department_name LIKE "BIF" and m.department_id = d.department_id and e.student_id = m.student_id and e.course_crn = c.crn
 
+-- SQL query to find the students that are not enrolled in any course
+SELECT DISTINCT s.student_name FROM students s WHERE NOT EXISTS (SELECT * from enrolled e where e.student_id = s.student_id)
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
