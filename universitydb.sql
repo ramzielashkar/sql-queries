@@ -112,6 +112,9 @@ ENGINE = InnoDB;
 -- SQL query to find all the rooms that can seat at least 100 people
 SELECT * FROM `rooms` WHERE room_capacity>=100
 
+-- SQL query to find the courses with the earliest start time
+SELECT course_name, MIN(start_time) FROM `courses`
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
