@@ -129,6 +129,9 @@ SELECT count(DISTINCT e.student_id) FROM enrolled e, majors_in m, courses c, dep
 -- SQL query to find the count of CS students enrolled in any course
 SELECT count(DISTINCT e.student_id) FROM enrolled e, majors_in m, departments d WHERE d.department_name="CS" and m.department_id = d.department_id and e.student_id = m.student_id
 
+-- SQL query to find the number of majors that each student has declared
+SELECT s.student_id, COUNT(m.department_id) FROM majors_in m, students s WHERE m.student_id = s.student_id GROUP BY s.student_id
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
