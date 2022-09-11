@@ -132,6 +132,9 @@ SELECT count(DISTINCT e.student_id) FROM enrolled e, majors_in m, departments d 
 -- SQL query to find the number of majors that each student has declared
 SELECT s.student_id, COUNT(m.department_id) FROM majors_in m, students s WHERE m.student_id = s.student_id GROUP BY s.student_id
 
+-- SQL query to get all departments with more than one majoring student
+SELECT d.department_name, COUNT(m.student_id) FROM majors_in m, departments d WHERE m.department_id = d.department_id GROUP BY m.department_id HAVING COUNT(m.student_id)>1
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
